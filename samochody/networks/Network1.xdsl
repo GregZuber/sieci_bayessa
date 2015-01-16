@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Grypa">
+			<state id="Tak" />
+			<state id="Nie" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="Grypa_zoladkowa">
+			<state id="Tak" />
+			<state id="Nie" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Goraczka">
+			<state id="Wysoka" />
+			<state id="Srednia" />
+			<state id="Niska" />
+			<parents>Grypa Grypa_zoladkowa</parents>
+			<probabilities>0.86 0.12 0.02 0.7 0.2 0.1 0.6 0.3 0.1 0.08 0.12 0.8</probabilities>
+		</cpt>
+		<cpt id="Kaszel">
+			<state id="Tak" />
+			<state id="Nie" />
+			<parents>Grypa Grypa_zoladkowa</parents>
+			<probabilities>0.9 0.1 0.95 0.05 0.3 0.7 0.4 0.6</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.5406.0" name="Network1" faultnameformat="nodestate">
+			<node id="Grypa">
+				<name>Grypa</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>644 87 761 176</position>
+			</node>
+			<node id="Goraczka">
+				<name>Goraczka</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>175 341 335 498</position>
+			</node>
+			<node id="Grypa_zoladkowa">
+				<name>Grypa zoladkowa</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>142 104 366 164</position>
+			</node>
+			<node id="Kaszel">
+				<name>Kaszel</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="12" />
+				<position>610 359 795 483</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
