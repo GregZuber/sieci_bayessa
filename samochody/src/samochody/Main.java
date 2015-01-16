@@ -5,7 +5,7 @@ import smile.Network;
 public class Main {
 	public static void main(String args[]){
 		Network net = new Network();
-		net.readFile("networks/Network1.xdsl");
+		net.readFile("networks/samochody.xdsl");
 	}
 	
 }
