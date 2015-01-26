@@ -1,536 +1,202 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <smile version="1.0" id="Network2" numsamples="1000" discsamples="10000">
 	<nodes>
-		<cpt id="Ciemny_kolor">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Model_samochodu">
+			<state id="Audi_5" />
+			<state id="Jeep_Renegade" />
+			<state id="Nissan_Navara" />
+			<state id="Peugeot_508" />
+			<state id="Volkswagen_Passat_B6" />
+			<state id="Opel_Astra_4" />
+			<state id="Citreoen_C4" />
+			<state id="Skoda_Superb_2" />
+			<state id="Mercedes_C_class" />
+			<probabilities>0.5 0.5 0 0 0 0 0 0 0</probabilities>
 		</cpt>
-		<cpt id="Duzy_samochod">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Typ_samochodu">
+			<state id="Terenowy" />
+			<state id="SUV" />
+			<state id="Kombi" />
+			<state id="Hatchback" />
+			<state id="Sedan" />
+			<parents>Model_samochodu</parents>
+			<probabilities>0 0 0.15 0.7 0.15 0.7 0.3 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0</probabilities>
 		</cpt>
-		<cpt id="Duzo_miejsca_na_bagaz">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Kraj_produkcji">
+			<state id="francuski" />
+			<state id="wloski" />
+			<state id="niemiecki" />
+			<state id="angielski" />
+			<state id="czeski" />
+			<state id="japonski" />
+			<parents>Model_samochodu</parents>
+			<probabilities>0.15 0 0.7 0 0.15 0 0.2 0 0.1 0.7 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0 0.5 0.5 0 0 0 0</probabilities>
 		</cpt>
-		<cpt id="Wyprodukowany_w_Europie">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Cena">
+			<state id="powyzej100tys" />
+			<state id="pomiedzy50tysA100tys" />
+			<state id="pomiedzy10tysA50tys" />
+			<state id="ponizej10tys" />
+			<parents>Model_samochodu</parents>
+			<probabilities>0.8 0.18 0.02 0 0.2 0.6 0.2 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0</probabilities>
 		</cpt>
-		<cpt id="O_duzej_pojemnosci">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Pojemnosc_w_litrach">
+			<state id="powyzej3" />
+			<state id="miedzy2a3" />
+			<state id="miedzy1a2" />
+			<state id="ponizej1" />
+			<parents>Model_samochodu</parents>
+			<probabilities>0.7 0.3 0 0 0 0.2 0.6 0.2 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0 0.5 0.5 0 0</probabilities>
 		</cpt>
-		<cpt id="Samochod_rodzinny">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Kolor">
+			<state id="Czarny" />
+			<state id="Szary" />
+			<state id="Granatowy" />
+			<state id="Bialy" />
+			<state id="Zolty" />
+			<parents>Model_samochodu</parents>
+			<probabilities>0.7 0.2 0.1 0 0 0.15 0.7 0 0.15 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0 0.5 0.5 0 0 0</probabilities>
 		</cpt>
-		<cpt id="Szary">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Ciemnosc_koloru">
+			<state id="ciemny" />
+			<state id="sredni" />
+			<state id="jasny" />
+			<parents>Kolor</parents>
+			<probabilities>0.8 0.2 0 0.3 0.6 0.1 0.6 0.4 0 0 0.1 0.9 0 0.2 0.8</probabilities>
 		</cpt>
-		<cpt id="Czarny">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Wielkosc_samochodu">
+			<state id="duzy" />
+			<state id="sredni" />
+			<state id="maly" />
+			<parents>Typ_samochodu</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
 		</cpt>
-		<cpt id="Granatowy">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Ilosc_miejsca_na_bagaz">
+			<state id="duzo" />
+			<state id="srednio" />
+			<state id="malo" />
+			<parents>Typ_samochodu</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
 		</cpt>
-		<cpt id="Terenowy">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Samochod_rodzinny_2">
+			<state id="tak" />
+			<state id="nie" />
+			<parents>Typ_samochodu</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="SUV">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Wyprodukowany_w_europie">
+			<state id="tak" />
+			<state id="nie" />
+			<parents>Kraj_produkcji</parents>
+			<probabilities>0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
 		</cpt>
-		<cpt id="Kombi">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Wysokosc_ceny">
+			<state id="wysoka" />
+			<state id="srednia" />
+			<state id="niska" />
+			<parents>Cena</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
 		</cpt>
-		<cpt id="Hatchback">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Sedan">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="wloski">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="francuski">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="niemiecki">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="angielski">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="czeski">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="drogi">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Audi_5">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Jeep_Renegade">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Nissan_Navara">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Peugeot_508">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Volkswagen_Passat_B6">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Opel_Astra_4">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Citroen_C4">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Skoda_Superb_2">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Mercedes_Benz_C_class">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Bialy">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="Zolty">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x__2_5">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_2_0_2_5_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_1_5_2_0__">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_1_0_1_5_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_1_0_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_100_000">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_50_000__100_000_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_30_000__50_000_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_20_000__30_000_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_10_000__20_000_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_5_000__10_000_">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="x_5_000">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
-		</cpt>
-		<cpt id="japonski">
-			<state id="State0" />
-			<state id="State1" />
-			<probabilities>0.5 0.5</probabilities>
+		<cpt id="Pojemnosc">
+			<state id="duza" />
+			<state id="srednia" />
+			<state id="mala" />
+			<parents>Pojemnosc_w_litrach</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
 		</cpt>
 	</nodes>
 	<extensions>
 		<genie version="1.0" app="GeNIe 2.0.5406.0" name="Network2" faultnameformat="nodestate">
-			<node id="Ciemny_kolor">
-				<name>Ciemny kolor</name>
+			<node id="Wielkosc_samochodu">
+				<name>Wielkosc_samochodu</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>62 566 135 611</position>
+				<position>208 354 322 425</position>
 			</node>
-			<node id="Duzy_samochod">
-				<name>Duzy samochod</name>
+			<node id="Ciemnosc_koloru">
+				<name>Ciemnosc_koloru</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>203 568 292 623</position>
+				<position>70 365 163 423</position>
 			</node>
-			<node id="Duzo_miejsca_na_bagaz">
-				<name>Duzo miejsca na bagaz</name>
+			<node id="Ilosc_miejsca_na_bagaz">
+				<name>Ilosc_miejsca_na_bagaz</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>294 565 389 624</position>
+				<position>347 350 475 430</position>
 			</node>
-			<node id="Wyprodukowany_w_Europie">
-				<name>Wyprodukowany w Europie</name>
+			<node id="Samochod_rodzinny_2">
+				<name>Samochod_rodzinny</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>570 558 673 622</position>
+				<position>510 353 618 420</position>
 			</node>
-			<node id="O_duzej_pojemnosci">
-				<name>O duzej pojemnosci</name>
+			<node id="Wyprodukowany_w_europie">
+				<name>Wyprodukowany_w_europie</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>1048 546 1152 611</position>
+				<position>672 332 821 425</position>
 			</node>
-			<node id="Samochod_rodzinny">
-				<name>Samochod rodzinny</name>
+			<node id="Wysokosc_ceny">
+				<name>Wysokosc_ceny</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>389 560 495 626</position>
+				<position>909 358 1000 414</position>
 			</node>
-			<node id="Szary">
-				<name>Szary</name>
+			<node id="Pojemnosc">
+				<name>Pojemnosc</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>9 459 55 487</position>
+				<position>1118 371 1184 412</position>
 			</node>
-			<node id="Czarny">
-				<name>Czarny</name>
+			<node id="Kolor">
+				<name>Kolor</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>4 508 55 539</position>
+				<position>89 272 132 298</position>
 			</node>
-			<node id="Granatowy">
-				<name>Granatowy</name>
+			<node id="Typ_samochodu">
+				<name>Typ_samochodu</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>60 448 128 490</position>
+				<position>365 252 456 308</position>
 			</node>
-			<node id="Terenowy">
-				<name>Terenowy</name>
+			<node id="Kraj_produkcji">
+				<name>Kraj_produkcji</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>191 507 255 547</position>
+				<position>701 251 781 301</position>
 			</node>
-			<node id="SUV">
-				<name>SUV</name>
+			<node id="Cena">
+				<name>Cena</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>234 460 276 486</position>
+				<position>924 251 967 277</position>
 			</node>
-			<node id="Kombi">
-				<name>Kombi</name>
+			<node id="Pojemnosc_w_litrach">
+				<name>Pojemnosc_w_litrach</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>298 464 344 492</position>
+				<position>1082 239 1194 309</position>
 			</node>
-			<node id="Hatchback">
-				<name>Hatchback</name>
+			<node id="Model_samochodu">
+				<name>Model_samochodu</name>
 				<interior color="e5f6f7" />
 				<outline color="000080" />
 				<font color="000000" name="Arial" size="8" />
-				<position>354 456 418 496</position>
-			</node>
-			<node id="Sedan">
-				<name>Sedan</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>408 511 456 541</position>
-			</node>
-			<node id="niemiecki">
-				<name>niemiecki</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>525 410 582 445</position>
-			</node>
-			<node id="francuski">
-				<name>francuski</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>509 509 568 545</position>
-			</node>
-			<node id="wloski">
-				<name>wloski</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>506 450 554 480</position>
-			</node>
-			<node id="angielski">
-				<name>angielski</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>614 408 670 443</position>
-			</node>
-			<node id="czeski">
-				<name>czeski</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>636 462 684 492</position>
-			</node>
-			<node id="drogi">
-				<name>drogi</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>835 570 900 617</position>
-			</node>
-			<node id="Audi_5">
-				<name>Audi 5</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>19 135 67 165</position>
-			</node>
-			<node id="Jeep_Renegade">
-				<name>Jeep Renegade</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>72 58 158 111</position>
-			</node>
-			<node id="Nissan_Navara">
-				<name>Nissan Navara</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>212 30 294 81</position>
-			</node>
-			<node id="Peugeot_508">
-				<name>Peugeot 508</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>347 18 420 63</position>
-			</node>
-			<node id="Volkswagen_Passat_B6">
-				<name>Volkswagen Passat B6</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>477 21 562 74</position>
-			</node>
-			<node id="Opel_Astra_4">
-				<name>Opel Astra 4</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>646 27 719 72</position>
-			</node>
-			<node id="Citroen_C4">
-				<name>Citroen C4</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>768 40 832 80</position>
-			</node>
-			<node id="Skoda_Superb_2">
-				<name>Skoda Superb 2</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>899 41 987 96</position>
-			</node>
-			<node id="Mercedes_Benz_C_class">
-				<name>Mercedes Benz C class</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>1083 109 1176 167</position>
-			</node>
-			<node id="Bialy">
-				<name>Bialy</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>133 460 175 486</position>
-			</node>
-			<node id="Zolty">
-				<name>Zolty</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>136 506 179 532</position>
-			</node>
-			<node id="x__2_5">
-				<name>&gt;=2.5</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>987 487 1032 515</position>
-			</node>
-			<node id="x_2_0_2_5_">
-				<name>&lt;2.0,2.5)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>978 429 1035 464</position>
-			</node>
-			<node id="x_1_5_2_0__">
-				<name>&lt;1.5,2.0).</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>1064 428 1128 468</position>
-			</node>
-			<node id="x_1_0_1_5_">
-				<name>&lt;1.0,1.5)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>1149 430 1206 465</position>
-			</node>
-			<node id="x_1_0_">
-				<name>&lt;1.0.</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>1156 479 1202 507</position>
-			</node>
-			<node id="x_100_000">
-				<name>&gt;100 000</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>755 524 814 560</position>
-			</node>
-			<node id="x_50_000__100_000_">
-				<name>&lt;50 000, 100 000)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>736 452 835 513</position>
-			</node>
-			<node id="x_30_000__50_000_">
-				<name>&lt;30 000, 50 000)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>736 397 829 455</position>
-			</node>
-			<node id="x_20_000__30_000_">
-				<name>&lt;20 000, 30 000)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>798 346 891 404</position>
-			</node>
-			<node id="x_10_000__20_000_">
-				<name>&lt;10 000, 20 000)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>856 398 949 456</position>
-			</node>
-			<node id="x_5_000__10_000_">
-				<name>&lt;5 000, 10 000)</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>873 478 961 533</position>
-			</node>
-			<node id="x_5_000">
-				<name>&lt;5 000</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>890 533 939 563</position>
-			</node>
-			<node id="japonski">
-				<name>japonski</name>
-				<interior color="e5f6f7" />
-				<outline color="000080" />
-				<font color="000000" name="Arial" size="8" />
-				<position>652 510 706 543</position>
+				<position>615 128 716 191</position>
 			</node>
 		</genie>
 	</extensions>
