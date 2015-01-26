@@ -10,27 +10,13 @@ import smile.SMILEException;
 
 public class NetworkAdapter {
 	
-	private static final Map<String, Double> CARS = new HashMap<>();
-	
-	static {
-		CARS.put("Audi_5", null);
-		CARS.put("Jeep_Renegade", null);
-		CARS.put("Nissan_Navara", null);
-		CARS.put("Peugeot_508", null);
-		CARS.put("Volkswagen_Passat_B6", null);
-		CARS.put("Opel_Astra_4", null);
-		CARS.put("Citroen_C4", null);
-		CARS.put("Skoda_Superb_2", null);
-		CARS.put("Mercedes_Benz_C_class", null);
-	}
-	
 	private static final List<String> EVIDENCE_NODES = new LinkedList<String>();
 	
 	static {
 		EVIDENCE_NODES.add("Ciemnosc_koloru"); 
 		EVIDENCE_NODES.add("Wielkosc_samochodu"); 
 		EVIDENCE_NODES.add("Ilosc_miejsca_na_bagaz"); 
-		EVIDENCE_NODES.add("Samochod_rodzinny"); 
+		EVIDENCE_NODES.add("Samochod_rodzinny_2"); 
 		EVIDENCE_NODES.add("Wyprodukowany_w_europie"); 
 		EVIDENCE_NODES.add("Wysokosc_ceny"); 
 		EVIDENCE_NODES.add("Pojemnosc"); 
@@ -46,11 +32,13 @@ public class NetworkAdapter {
 	}
 	
 	public Map<String, Double> getCars() {
-		for (String carName : CARS.keySet()) {
-			double value = getNodeStateValue(carName, "State0");
-			CARS.put(carName, value);
+		String[] carsNames = this.network.getOutcomeIds("Model_samochodu");
+		double[] carsProbabilities = this.network.getNodeValue("Model_samochodu");
+		Map<String, Double> carsWithProbs = new HashMap<String, Double>();
+		for(int i = 0; i < carsNames.length; ++i) {
+			carsWithProbs.put(carsNames[i], carsProbabilities[i]);
 		}
-		return new HashMap<String, Double>(CARS);
+		return carsWithProbs;
 	}
 	
 	public Map<String, String[]> getNodesWithEvidences() {
@@ -65,26 +53,14 @@ public class NetworkAdapter {
 		
 		for (String en : evidenceNodeToChosenValue.keySet()) {
 			try {
-				this.network.setEvidence(en, evidenceNodeToChosenValue.get(en));
+				String evidence = evidenceNodeToChosenValue.get(en);
+				System.out.println(String.format("[INFO] Setting evidence %s on node %s", evidence, en));
+				this.network.setEvidence(en, evidence);
 			} catch(SMILEException ex) {
-				System.out.println(String.format("[ERROR][SETTING_EVIDENCE] Node %s not exists", en));
+				System.out.println(String.format("[ERROR][SETTING_EVIDENCE] Node %s. Ex: %s", en, ex.getMessage()));
 			}
 		}
 		this.network.updateBeliefs();
-	}
-	
-	private double getNodeStateValue(String nodeName, String stateName) {
-		if(this.network == null) {
-			return 0.3d;
-		}
-		String[] stateIds = getNodeStates(nodeName);
-		int idx;
-		for(idx = 0; idx < stateIds.length; idx++) {
-			if(stateName.equals(stateIds[idx])) {
-				break;
-			}
-		}
-		return this.network.getNodeValue(nodeName)[idx];
 	}
 
 	private String[] getNodeStates(String nodeName) {
