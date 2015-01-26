@@ -16,7 +16,7 @@ public class NetworkAdapter {
 		EVIDENCE_NODES.add("Ciemnosc_koloru"); 
 		EVIDENCE_NODES.add("Wielkosc_samochodu"); 
 		EVIDENCE_NODES.add("Ilosc_miejsca_na_bagaz"); 
-		EVIDENCE_NODES.add("Samochod_rodzinny_2"); 
+		EVIDENCE_NODES.add("Samochod_rodzinny"); 
 		EVIDENCE_NODES.add("Wyprodukowany_w_europie"); 
 		EVIDENCE_NODES.add("Wysokosc_ceny"); 
 		EVIDENCE_NODES.add("Pojemnosc"); 
