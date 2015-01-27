@@ -1,10 +1,12 @@
 package samochody;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -43,6 +45,16 @@ public class Main {
 		final Shell shell = new Shell(parent);
 		shell.setLayout(new GridLayout(2, true));
 	    shell.setSize(800, 300);
+	    
+	    
+//	    ValueComparabtor bvc =  new ValueComparator(carToProbability);
+//        TreeMap<String,Double> sorted_map = new TreeMap<String,Double>(bvc);
+
+
+//        System.out.println("unsorted map: "+carToProbability);
+//
+//        sorted_map.putAll(carToProbability);
+	    
 	    for (String carName : carToProbability.keySet()) {
 	    	Label carLabel = new Label(shell, SWT.FILL);
 			carLabel.setText(carName);
@@ -60,6 +72,23 @@ public class Main {
 				display.sleep();
 			}
 		}
+	}
+	
+	class ValueComparator implements Comparator<String> {
+
+	    Map<String, Double> base;
+	    public ValueComparator(Map<String, Double> base) {
+	        this.base = base;
+	    }
+
+	    // Note: this comparator imposes orderings that are inconsistent with equals.    
+	    public int compare(String a, String b) {
+	        if (base.get(a) >= base.get(b)) {
+	            return -1;
+	        } else {
+	            return 1;
+	        } // returning 0 would merge keys
+	    }
 	}
 
 	private static void gatherEvidences() throws NumberFormatException, IOException {
@@ -109,7 +138,6 @@ public class Main {
 			public void widgetSelected(SelectionEvent e) {
 				updateNetwork();
 				presentResults(shell, display);
-				shell.close();
 				
 			}
 
