@@ -1,62 +1,149 @@
 package samochody;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowData;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 
 
 public class Main {
 	
 	private static NetworkAdapter netAdapter;
 	private static Map<String, String[]> evidences;
+	private static final Map<String, String> result = new HashMap<String, String>();
 	
 	public static void main(String args[]) throws NumberFormatException, IOException{
 		netAdapter = new NetworkAdapter("networks/samochody.xdsl");
 		evidences = netAdapter.getNodesWithEvidences();
 		while(true) {
-			Map<String, String> evidenceNodeToValue = gatherEvidences();
-			updateNetwork(evidenceNodeToValue);
-			presentResults();
-			if(!repeat()) {
-				break;
-			}	
+			gatherEvidences();
 		}	
 	}
 
-	private static void updateNetwork(Map<String, String> evidenceNodeToValue) {
-		netAdapter.setEvidenceNodesAndUpdateNetwork(evidenceNodeToValue);
+	private static void updateNetwork() {
+		printSelection();
+		netAdapter.setEvidenceNodesAndUpdateNetwork(result);
 	}
 
-	private static boolean repeat() {
-		return false;
-	}
-
-	private static void presentResults() {
+	private static void presentResults(Shell parent) {
 		Map<String, Double> carToProbability = netAdapter.getCars();
-		for (String carName : carToProbability.keySet()) {
-			String output = String.format("Car: %s\t Probability: %f", carName, carToProbability.get(carName));
-			System.out.println(output);
+		
+		final Shell shell = new Shell(parent);
+		shell.setLayout(new GridLayout(2, true));
+	    shell.setSize(800, 300);
+	    for (String carName : carToProbability.keySet()) {
+	    	Label carLabel = new Label(shell, SWT.FILL);
+			carLabel.setText(carName);
+			carLabel.setLayoutData(new GridData(SWT.FILL));
+			Label probLabel = new Label(shell, SWT.FILL);
+			probLabel.setLayoutData(new GridData(SWT.FILL));
+			probLabel.setText(carToProbability.get(carName).toString());
 		}
+		
+		
+		shell.pack();
+		shell.open();
+		shell.addListener(SWT.Close, new Listener() { 
+			@Override 
+			public void handleEvent(Event event)  { 
+				System.out.println("Child Shell handling Close event, about to dispose this Shell"); 
+				shell.dispose(); 
+			} 
+		}); 	
+		while(!shell.isDisposed());
 	}
 
-	private static Map<String, String> gatherEvidences() throws NumberFormatException, IOException {
-		Map<String, String> result = new HashMap<String, String>();
-		for (String node : evidences.keySet()) {
-			System.out.println(node);
-			int idx = 0;
+	private static void gatherEvidences() throws NumberFormatException, IOException {
+		Display display = new Display();
+	    final Shell shell = new Shell(display);
+
+	    shell.setLayout(new GridLayout());
+	    shell.setSize(500, 200);
+	    
+	    for (String node : evidences.keySet()) {
+			Composite composite = new Composite(shell, SWT.NONE);
+			composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+			composite.setLayout(new RowLayout());
+			Label text = new Label(composite, SWT.SINGLE | SWT.LEAD | SWT.BORDER);
+			text.setText(node);
+			text.setLayoutData(new RowData());
+			List<Button> radios = new LinkedList<Button>();
 			for (String evidence : evidences.get(node)) {
-				System.out.println(String.format("[%d] %s", idx, evidence));
-				++idx;
+				Button button = new Button(composite, SWT.RADIO);
+				button.setText(evidence);
+				button.setData(node);
+				button.addSelectionListener(new SelectionListener() {
+					
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						Button radio = (Button)e.getSource();
+						result.put((String)radio.getData(), radio.getText());
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent e) {
+					}
+					
+				});
+				radios.add(button);
 			}
-			System.out.print("Your choice: ");
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			int choice = Integer.parseInt(br.readLine());
-			System.out.println("Your choise is: " + choice);
-			result.put(node, evidences.get(node)[choice]);
 		}
-		return result;
+	    
+		
+	    Button compute = new Button(shell, SWT.PUSH);
+	    
+		compute.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		compute.setText("Compute");
+		compute.addSelectionListener(new SelectionListener() {
+			
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				updateNetwork();
+				presentResults(shell);
+				shell.close();
+				
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
+		
+	    
+	    shell.pack();
+	    shell.open();
+	    while (!shell.isDisposed()) {
+	      if (!display.readAndDispatch()) {
+	        display.sleep();
+	      }
+	    }
+	    display.dispose();
+
 	}
+	
+	
+	private static void printSelection() {
+		System.out.println("[INFO] Evidences selection:");
+		for (String nodeName : result.keySet()) {
+			System.out.println(String.format("[INFO] Node: %s\tEvidence: %s", nodeName, result.get(nodeName)));
+		}
+	}
+		
 	
 }
