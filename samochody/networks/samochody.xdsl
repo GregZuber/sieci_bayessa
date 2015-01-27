@@ -62,47 +62,47 @@
 			<state id="sredni" />
 			<state id="jasny" />
 			<parents>Kolor</parents>
-			<probabilities>0.8 0.15 0.05 0.3 0.6 0.1 0.7 0.25 0.05 0.01 0.09 0.9 0.05 0.15 0.8</probabilities>
+			<probabilities>0.6 0.3 0.1 0.3 0.6 0.1 0.6 0.3 0.1 0.01 0.09 0.9 0.05 0.15 0.8</probabilities>
 		</cpt>
 		<cpt id="Wielkosc_samochodu">
 			<state id="duzy" />
 			<state id="sredni" />
 			<state id="maly" />
 			<parents>Typ_samochodu</parents>
-			<probabilities>0.7 0.2500000000000001 0.05 0.7 0.2500000000000001 0.05 0.6 0.35 0.05 0.1 0.3 0.6 0.2 0.6 0.2</probabilities>
+			<probabilities>0.6 0.3 0.1 0.7 0.2 0.1 0.6 0.3 0.1 0.1 0.3 0.6 0.2 0.6 0.2</probabilities>
 		</cpt>
 		<cpt id="Ilosc_miejsca_na_bagaz">
 			<state id="duzo" />
 			<state id="srednio" />
 			<state id="malo" />
 			<parents>Typ_samochodu</parents>
-			<probabilities>0.05 0.1499999999999999 0.8 0.6 0.35 0.05 0.8 0.15 0.05 0.05 0.1499999999999999 0.8 0.05 0.25 0.7</probabilities>
+			<probabilities>0.15 0.25 0.6 0.6 0.3 0.1 0.7 0.2 0.1 0.1 0.2 0.7 0.1 0.2 0.7</probabilities>
 		</cpt>
 		<cpt id="Samochod_rodzinny">
 			<state id="tak" />
 			<state id="nie" />
 			<parents>Typ_samochodu</parents>
-			<probabilities>0.01 0.99 0.9 0.1 0.7 0.3 0.2 0.8 0.5 0.5</probabilities>
+			<probabilities>0.2 0.8 0.8 0.2 0.7 0.3 0.2 0.8 0.5 0.5</probabilities>
 		</cpt>
 		<cpt id="Wyprodukowany_w_europie">
 			<state id="tak" />
 			<state id="nie" />
 			<parents>Kraj_produkcji</parents>
-			<probabilities>0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.05 0.95</probabilities>
+			<probabilities>0.7 0.3 0.7 0.3 0.7 0.3 0.7 0.3 0.7 0.3 0.3 0.7</probabilities>
 		</cpt>
 		<cpt id="Wysokosc_ceny">
 			<state id="wysoka" />
 			<state id="srednia" />
 			<state id="niska" />
 			<parents>Cena</parents>
-			<probabilities>0.8 0.15 0.05 0.6 0.35 0.05 0.3 0.65 0.05 0.05 0.15 0.8</probabilities>
+			<probabilities>0.6 0.25 0.15 0.6 0.25 0.15 0.2 0.65 0.15 0.15 0.25 0.6</probabilities>
 		</cpt>
 		<cpt id="Pojemnosc">
 			<state id="duza" />
 			<state id="srednia" />
 			<state id="mala" />
 			<parents>Pojemnosc_w_litrach</parents>
-			<probabilities>0.9 0.07000000000000001 0.03 0.6 0.35 0.05 0.2 0.6 0.2 0.05 0.15 0.8</probabilities>
+			<probabilities>0.7 0.2 0.1 0.6 0.25 0.15 0.2 0.6 0.2 0.15 0.25 0.6</probabilities>
 		</cpt>
 	</nodes>
 	<extensions>
