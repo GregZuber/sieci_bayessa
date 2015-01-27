@@ -16,9 +16,7 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 
@@ -31,9 +29,7 @@ public class Main {
 	public static void main(String args[]) throws NumberFormatException, IOException{
 		netAdapter = new NetworkAdapter("networks/samochody.xdsl");
 		evidences = netAdapter.getNodesWithEvidences();
-		while(true) {
-			gatherEvidences();
-		}	
+		gatherEvidences();	
 	}
 
 	private static void updateNetwork() {
@@ -41,7 +37,7 @@ public class Main {
 		netAdapter.setEvidenceNodesAndUpdateNetwork(result);
 	}
 
-	private static void presentResults(Shell parent) {
+	private static void presentResults(Shell parent, Display display) {
 		Map<String, Double> carToProbability = netAdapter.getCars();
 		
 		final Shell shell = new Shell(parent);
@@ -59,18 +55,15 @@ public class Main {
 		
 		shell.pack();
 		shell.open();
-		shell.addListener(SWT.Close, new Listener() { 
-			@Override 
-			public void handleEvent(Event event)  { 
-				System.out.println("Child Shell handling Close event, about to dispose this Shell"); 
-				shell.dispose(); 
-			} 
-		}); 	
-		while(!shell.isDisposed());
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
 	}
 
 	private static void gatherEvidences() throws NumberFormatException, IOException {
-		Display display = new Display();
+		final Display display = new Display();
 	    final Shell shell = new Shell(display);
 
 	    shell.setLayout(new GridLayout());
@@ -115,7 +108,7 @@ public class Main {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				updateNetwork();
-				presentResults(shell);
+				presentResults(shell, display);
 				shell.close();
 				
 			}
